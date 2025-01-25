@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercico aula 6 - javascript</title>
+    <style>
+        body {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var nome = window.prompt("qual seu nome?")
+        window.alert(nome.split(' ', ''))
+        document.body.innerHTML += `<p>Olá, <strong>${nome}!</strong> seu nome tem ${nome.split(' ', '')} letras </p> `
+        document.body.innerHTML += `<p>seu nome em tudo maisculoa é ${nome.toUpperCase()} </p> `
+        document.body.innerHTML += `<p>e seu nome todo em minuscula fica ${nome.toLowerCase()}</p>`
+
+    </script>
+</body>
+</html>
