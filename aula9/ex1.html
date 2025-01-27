@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <h1>Estudando o <abbr title="Document Object Model">DOM</abbr></h1>
+    <h1 id="title">Estudando o <abbr title="Document Object Model">DOM</abbr></h1>
     <p>dom ueee</p>
     <p>estudando <strong>DOM</strong> aqui sla man</p>
     <div>aperte em mim</div>
@@ -21,6 +21,12 @@
     <script>
         var p1 = window.document.getElementsByTagName('p')[0]
         window.document.write(p1.innerText)
+
+        //pegando um elemdo DOM através da sintaxe do CSS
+        var select_with_query_selector = window.document.querySelector('#title')
+        select_with_query_selector.style.background = 'black'
+
+        
     </script>
 </body>
 </html>

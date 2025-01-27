@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>eventos DOM</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                font: normal 1em Arial, sans-serif;
+                box-sizing: border-box;
+            }
+            html{
+                height: 100vh;
+                width: 100vw;
+            }
+
+            body {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0ODg0NDQ4NCA0ICA0HCAgNDQ8IDQcNFREWFhURExMYHSggGBolGxMVITEhMSkrLi4uFx8zODMsNygtLisBCgoKDQ0OFQ8QFSsZFRkrKysrKy0rLSsrLSstLSstNzc3NzctNy0tLS0rLSsrKystKystKysrKysrLSsrLSsrK//AABEIALEBHAMBEQACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAQMEAgUGB//EADcQAAEEAQEFBQYEBgMAAAAAAAABAhESAwQFITFTsRUjQXOSBhMyUWFxIiSBkRRCdIKhwTNScv/EABkBAQEBAQEBAAAAAAAAAAAAAAABAgMEBf/EACIRAQEAAgMBAQADAQEBAAAAAAABAhEDITESEzJBUQQUYf/aAAwDAQACEQMRAD8A/NtrbT1KajOiZsqImoeiJdd289kk08tvbJ2pqedl9al1E2dqann5fWo0bO09Tz8vrUmobO1NTzsvrUahunamp52X1qXUNnamp52X1qNQ2dqann5fWpNQ2dqannZfWpdQ2dqann5fWpNQ2jtTU8/L61Gobqe1NTz8vrUuobp2pqefl9ak1DZ2pqefl9ajUN07U1PPy+tRqG6dqannZfWpdQ3TtTU87L61JqG6dqannZfWpdQ2dqann5fWpNQ2dqann5fWo1DdO1NTz8vrUuobO1NTz8vrUmobp2pqefl9ajUN07T1PPy+tRqGztTU8/L61Lo2dqann5fWpNQ3TtTU87L61Gobp2pqedl9al1DdO1NTz8vrUahunamp5+X1qTUN07U1PPy+tS6hs7U1PPy+tSahunamp5+X1qXUNnaeq52X1qNGztTU8/L61JqG313srr866dVXLkcvv3JKuVfBDOUm28b0+T2un5jP/UP6m54531jgqEAIAQAgBACAEAIAQAgBACAEAIAQAgBACAEAIAQAgBACAEAIAQAgBACAEAWYnQu/eWJXoM0DcrZZ+F0TX5m/jbn+nze30PszgczA5rkVFTUO6IcM5qu+GUsfMbXT8xn/qH9Tc8ZvrJACAEAIAQAgoQQIAQAgIQFIAQAgBACChBAgBBQggQAgBBQggQAgBAQgKQAgBACAEFHpbLzK1yfc6YV5+WdP0r2fxsdgsqIs5Flf0QvJO2OPK6fmW1k/MZ/Pf1OM8eq+skFREATACAEAIAQAgBACAEARAEwBEATAEQAgCYAQBEATACAEAIAQBEATAEQAgaCAJgCIAQBo0u5U+5vFjPx+ley2T8snmu6Ibz9cMPH55tZPzGfz39TjPHqvrJBUIAQAgBACoCo0EAKgIAVAVAQAgBUBACoCAEAKgIAQAgBUBACAEAKgKgIAQNBACAL9MyVN4Ttz5L0/Q/ZmE08fLK7ohvP1x4/Hwm1U/MZ/Pf1OM8eq+skFQgBACoCAEAIAVAQAqAgBACoCAEAKgIAVAQAgBACoCoCAFQFQEAIAVAVAVAVAVCbbNFjWUO2GLz8uT7z2d0z/ccOOVy/4QnJ6nF/F8NtVPzGbz39TlPHpvrLUqFQbKg2VBsqDZUGyAbIBsqDZUBUGyoNlQbKg2VAVBsqAgBUGyAbKg2VBtFQbTUGyoNlQbRUG01BtFQbTUGyoNlQbW4MCuVEjipvHFjLJ9JszZiJDnJMJMHXx5r3e31WxnP90sJCJmciJH0Q5Z+uvH4/O9qN7/N57+pieO19ZKlQqAgBUBUBUBUBUBUBUBUBUBUBACAFQFQFQFQFQFQFQFQEA2QAqAqAqAqBKNLpLXSYlL8p9xow6aTcwc8uR7Oz9nxC/qb1pxuVr31z4sTJcqJCfucr6649xZsjbdsblY1EamZzU/ZDhn69XHJp8PtRvf5vPf1Ok8Yy9ZalQqDZUGyoCoCoCoNlQFQFQFQbKgKg2VBsqAqAqAqAqAqAqAqAqAqAqAqAqAqAqARCxL2vxZo4pJuZuWXG2YNbjT4mya+4z+VXZdtLwY2qGbm1ON5up1WTJ8TlX6eBi9ukkj6P2ZTuF893RDjn674ePE2m3v8AN5zup1njjl7WWpUKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgfUezbe4XzndEOWfrth48Xabe/zec7qdcfI45e1mqVkqUKkNoqBNShUBUgVBsqAqUKgKgKkNlQbKgKg2VAVAioE1KFQFSBUBUCKlCoCoE1IIqUTUgVAVKFQFQPp/ZtO4XzndEOOfrtx+PG2k3v8AL5zup1x8jjl7WapUKgKgKgKgKgKgKgKlCpAqAqAqAqAqVCpFKgKgKgKgKgKgKgKgKgKgKgTUCKgKgKgKgKgKgfTezqdwvnO6Ics/Xbj8ePtJvf5fOd1OuPkcMvazVNIVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAlGEHSYwrpMRFFxAcrjKjhWhCpQqAqB9L7PJ3K+c7ohxz9d+Px4+0U77L5zup1x8jhl7WeCskAIAQAgBACAEAIAVAVAVAQAqAgBACAEAKgKBSgCoQgBUAjQrtGBVzMZmtRc3EZ20OxAUvxmmapcw0y4VoZKgIA+k9n07lfOd0Q5Z+u/H48jaLe+y+a7qdcfI45e1nqaZKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgKgEaQdNxhViYyK5VgHKtKiKAKBBGhVuPGq+EkqyNmDTK5N3FPA53LTrjjtcmnVOJnbWh+KBKWMz2objFZsrTUc6qVpplFShUD6PYCdyvmu6IcOT16OLx5O0G99l813U7Y+R58vaz1KhUBUBUBUBUoVAVCbKg2VBsqDZUGyoXZUBUBUglGAdtxqTateLQuVJ4HO5x1mFsVu07kLuM3Go/h1XwLs+ah2lcngPqHzXC4VNbZ00aXZz8qKrf5TGXJMW8OK5eL27Nqn4t7uhj9N3pv8tTt6eDRM91u4+Jxud+nox4589KsOlcjoQ1cppnHC7cajG6d6RBcbEylVZU3QWMViyMOkc6zvYbjnVStNMoqAqVNvotgp3K+a7ohw5PXo4vHl69vfZfNd1OuPkccv5VRQqHuwFACsCIoURUCKgTUIVAVAVAioVNQFAFAFQLMbd+8lWN2FGeJxu3fHTVjyIu5Nxi4ukyWLhaviTda1HCY2oXdZ1I5eiCF0q9yimts6e5s7RJjZZF+NJPLyZ/V09nFx/OO1a6W7v13mvrUZ+N1zmxKxYThAl2mU+U4M6TvSF+YyxMc3ephxMelz1WLNp/FDrMnLLFhy4zpK42MeRh0jlWdzTbFc1KiagfQ7Cb3K+avRDhyevRxePP1zO9yea7qdMfI5ZTuqUxlTTr3ZA92NrpHui7TSFxDZpW7GaZc1CIqVCAEASjJIrtMJNrp17om106TENrpC4hs05XGVNJYwlIuaiGa3HbUTwJ21NLU+6mdNbXYMNljepnK6bxx2vyaBycDE5I3eKrF0ENRyr9VQz+m7qNflqbrvJrIRGpMNSCTj/ureX+o60uVZtvjxkmWPWmsMrvavX6yF3JMmuPjY5eXtkXUz4Qp1+NOX6bP4ld30HxD9KtXMi/Qz86b+9qczkNSMZWMOViHWOGShcZvbCaohByqF0m3u7DTul81eiHLk9d+Lxk1rO9yeY7qXG9RnKd1TQrKahUowLHVUIq7JpobK+JiZbum7hqbYntO0cKpVppiualRFSomoFjVRDNjcyjpHoT5X6WJvMtOqEXSFaVHDmFRzRSoIhBazcSxqVfjYq8EMW6dMZt6OzWK10qm6Dz8vc1Hp4Zq7r0Fe1U4pxOOq9H1KqzPaqRPDxNYyztnLKXpmRWN4Jb6nTVrlvGIyajdEQgmCXkYs8KdsenHK7Uow0wlAJiSKre1TUZqpWmmK4VhUcVKy5c0qV7mxE7pfNXohx5PXfi/i41+KMmRV5i7v1M43cazx1ayL+x0c9rMOO0r4IZyumsZtU/NxbH2U3MP7Yuf9K8b9/zLYzMmrJqpSF3eBznHp2vLuaZ1RDbkqchuMVxRSppK4l+SjcPmoqXaOmYlVeG4lsWY2trNnou+eJwvLXonDK1YdFH2OeXI7Y8S12jReCGZyN3iirLoYNTlYy4dKH4INzLbncdOXYYSS/SXFSsG+3PcWYcbXGcrY3jJW/CjUSDhluvRjqRY7M34eH1MzG+tXOeKXONyMWiqNJtyVBwFLkNxiiNA5VoRyXSbT7l68EsPqRfnK+NmHZyq2XblXwOOXNq9O+PBubrJrNGrN6LJ1w5NuHJxfPbEdtOG3CtVTTL3Nit7pfNXohw5PXo4v4udrpGV8f916meLuN83Vecsqp21p597q5VVqVTfPExrfbpvU1FC4VXfw+aHT6105XG3tW7GqFl2zZpzC/c0jZg0iqiudLU8PqccuSS6jvhxWzdSuBqfNfkT6p8R3jwohLla3MZF+NrV3Khzu3THV9Vu02/cm5VNTPpm8ffTYmlSsRG7icvvt2/PrTpmlVESF4eBLyRqcVcZM6NWq7lQ1MLe4zlyTHqqv41Pma/Kuf7RXl1iruTeWcUnqZc1vipj8i8Uk3ZjGJllf6RlckLO5U8BjP8TLKa7Z8GmfkX8KT9Tplnjj65YceWd6acGz8sxEb4VTllzY6dsODPa7U6VzEmZjiZwzmVb5OO4xlR6nX5cfpY1ymbGpVjZUzdRubq12JUMyxu41xClZ7cOxqa3GbK4Vql6TVSjSCxulV3wpP1M3OT1ucdy8j2dJpatSU3njzz3Xu4+P5nbtXRxJpq1h1OK6KnzO2GWnnzx+umfBsmd7l+yHTL/o/xyw/5f9aF2cxFmOBj9snX/wA+Mr09m6VqMXd/Ov8Aozc63jxzT57aUuyv3L/yL4fU9fHNR8/ktuTrSaJV/EqLHgY5OTXTpxcW+2pmFGysSq8N3A5XK12mMx7YtVp8nFE3LviDvhli8/Jhl6zJpHqkxB1/SOP55WNuLRoxEVUVVVJ4cDhlyXLqPTjxTCS31cmdI3puTdwMfF/pv9J/bjIqKkon+DUlnrNyxvjL+KeCx9jrqOO7tY2fkpmxqVpwIvyU55R2wre1N3A89eqVw9ypwk1IzctPF2i1yumF3ns4dafO593LbJR3yU79OCzErm+Cr+hjLGVvHKxrxalU4NX9jllx/wD12x5tf0ry435HfCqT9C42YT1nKZZ3x7eztIuNkLxXep4uXP6yfS4OP4x7ao+hydWHU4ldKb953wunn5Jti7LVV3THidv3168//m34049JRsKk/U53O5V1x45jNITGicELu01Imsk8PXLsRZalxjlzfopYl0nHpleu5CZZ/Jjh9L8ezFmV4HO8/wDjrj/z/wCtuNqN3I2I+hxu69GOsek5Hr8hMVyyUOlfBTcmnO3aWYVneguRMV3u/khjbenORsFiZNuz/g/vX/RbtJYz6n43f+lPRPHky9a8HwoccvXpw/i5yCJkP4Cel8ULwT7nRyX5eCfY54uuXkY8n+zvHmyMYpi6UjQgRfiOeTri0nN2VONRismp4nbB5+RnNuaQjvDxQmXjeHrdj4nnvj1Y+thyehypWKqebjFSwlWDxCs7jpHOiCoOEK4Ky1aM5cjvxNZyd1ammHDyxmuWcS1ItMthFc5CxnJfpPh/uU1WY//Z') no-repeat bottom center;
+                background-size: cover;
+            }
+
+            strong{
+                color: red;
+            }
+
+            main 
+            {
+                background-color: rgba(0, 0, 0, 0.61);
+                height: 200px;
+                width: 500px;
+                border-radius: 20px;
+                box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.342);
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+
+                backdrop-filter: blur(6px);
+            }
+            p{
+                margin: 5px;
+                font: bold 2em Arial;
+            }
+
+            input[type="number"]
+            {
+
+                width: 60px;
+                font: normal 2em Arial;
+            }
+
+            #btn-somar
+            {
+                border: none;
+                background-color: white;
+                padding: 15px;
+                border-radius: 5px;
+
+                font: bolder 1em Arial;
+            }
+
+            #btn-somar:hover
+            {
+                cursor: pointer;
+                background-color: rgb(48, 99, 145);
+            }
+
+            
+            section#inputs
+            {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+
+            }
+
+            #output
+            {
+                border-radius: 5px;
+                background-color: aliceblue;
+
+            }
+        </style>
+    </head>
+    <body>
+        
+        <main>
+            <section id="inputs">
+                <input type="number" name="n1" id="n1" step=".1"> <p>+ </p>
+                <input type="number" name="n2" id="n2" step=".1">
+                <input type="button" value="Somar" id="btn-somar">
+            </section>
+            <section id="output">
+                <p>saida</p>
+            </section>
+        </main>
+
+        <script>
+            
+            var btn_somar = window.document.getElementById('btn-somar')
+            
+
+            btn_somar.addEventListener('click', somar)
+
+            function somar()
+            {
+                var input_n1 = window.document.getElementById('n1')
+                var input_n2 = window.document.getElementById('n2')
+                var saida = window.document.getElementById('output')
+                var soma = Number(input_n1.value) + Number(input_n2.value)
+                saida.innerHTML = `<p>O resultado é <strong>${soma.toString().replace('.', ',')}</strong></p>`
+            }
+        </script>
+    </body>
+</html>

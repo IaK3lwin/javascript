@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM - curso javascipt</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html
+        {
+            background-color: lightblue;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #area
+        {
+            background-color: green;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+
+        }
+
+        p {
+            font: bold 2em Arial;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- DIV -->
+    <div id="area">
+        <p>interaja</p>
+    </div>
+
+
+    <!-- Javascript -->
+    <script>
+        var div = window.document.getElementById('area')
+        div.addEventListener('click', clicar)
+        div.addEventListener('mouseenter', entrar)
+        div.addEventListener('mouseout', sair)
+        function clicar( /*parametis*/ ){
+            //bloco de código
+            
+            div.innerHTML = '<p>Clicou!</p>'
+            div.style.backgroundColor = 'black'
+        }
+        
+        function entrar()
+        {
+            div.innerHTML = '<p>entrou</p>'
+        }
+        
+        function sair()
+        {
+            div.innerHTML = '<p>saiu</p>'
+            div.style.backgroundColor = 'green'
+        }
+    </script>
+</body>
+</html>
