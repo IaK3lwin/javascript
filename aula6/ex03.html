@@ -21,6 +21,15 @@
         document.body.innerHTML += `<p>seu nome em tudo maisculoa é ${nome.toUpperCase()} </p> `
         document.body.innerHTML += `<p>e seu nome todo em minuscula fica ${nome.toLowerCase()}</p>`
 
+
+        //formantado
+        var n1 = Number(window.prompt('Insirir um número'))
+        //pegando o n1 e LOCALIZAndo para (pt-br, obejto que conterá as configurações {estilo: monetário, monetário: 'BRL' -> moeda brasileira} )
+        var format = n1.toLocaleString('pt-br', {
+            style: 'currency', currency: 'BRL'
+        })
+
+        window.alert(`o valor ${n1} formatado para valor monetártio em portugues Brasil é ${format}`)
     </script>
 </body>
 </html>
