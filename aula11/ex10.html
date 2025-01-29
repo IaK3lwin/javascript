@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condições</title>
+</head>
+<body>
+    <h1>sistema de multa</h1>
+    <p>sua velocidade atual é de: <input type="number" name="txtvel" id="textvel"></p>
+    <input type="button" value="Calcular" id="btn">
+    <div id="res">
+
+    </div>
+
+    <script>
+        document.getElementById('btn').addEventListener('click', () => {
+
+            var textv = document.getElementById('txtvel')
+            var res = document.getElementById('res')
+            res.innerHTML += `VocÇe está atualmente em ${textv.value}Km/h`
+
+
+
+    })
+        
+    </script>
+</body>
+</html>
