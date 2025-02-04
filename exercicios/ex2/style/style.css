@@ -1,0 +1,157 @@
+@charset "UFT-8";
+
+/* resentado estilização */
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* html */
+html {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* body */
+
+body {
+    height: 100%;
+
+    background-image: linear-gradient(120deg, #708ef3, #061549);
+}
+
+/* main */
+
+main  {
+    width: 100vw;
+    height: 100vh;
+    /* flex */
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+}
+
+h1 {
+    margin: 2%;
+    margin-bottom: 1%;
+}
+
+#container-info
+{
+    /* spacing */
+    padding: 1%;
+    /* border */
+    border: 1px solid black;
+    border-radius: 5px;
+
+    width: 400px;
+    /* background */
+    background: white;
+    box-shadow: 4px 5px 7px #0614499d;
+
+}
+
+#container-info > *
+{
+    padding-bottom: 10px;
+}
+
+#container-image
+{
+    /* size */
+    width: 100%;
+    padding: 10px;
+    /*  border */
+    border: 1px solid black;
+    /* fled */
+    display: flex;
+    flex-flow: column  wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    /* bajground */
+    
+}
+
+#imagem-pessoa
+{
+    /* size */
+    width: 200px;
+    height: 200px;
+    /* border */
+    border-radius: 50%;
+
+    /* background */
+    background-color: gray;
+    background: no-repeat center center;
+    background-image:  url(../img/person.png);
+    background-size: cover;
+
+
+}
+
+input[type="number"]
+{
+    border: none;
+    outline: 0;
+    width: 55px;
+    padding-left: 10px;
+    border-bottom: 1px solid rgb(150, 150, 150);
+    margin: 10px;
+    background-color: transparent;
+    transition: border-bottom .5s ease-in-out;
+}
+
+input[type="number"]:focus
+{
+    border-bottom: 2px  solid #061549;
+}
+
+input[type="number"]:invalid
+{
+    border-bottom: 1px solid red;
+}
+
+input[type="radio"]
+{
+    border: none;
+    all: unset;
+    border: 1px dashed black;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+input[type="radio"]:hover
+{
+    background-color: rgb(124, 124, 124);
+    cursor: pointer;
+}
+
+input[type="radio"]:checked
+{
+    background-color: black;
+}
+
+button
+{
+    all: unset;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid rgb(150, 150, 150) ;
+
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .7s ease-in-out;
+}
+
+button:hover
+{
+    background-color: #06144944;
+    
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/style.css">
+        <title>idade</title>
+    </head>
+    <body>
+        
+        <!-- conteúdo principal -->
+        <main>
+            <h1>Verificando de idade</h1>
+
+            <!-- sessão de informações -->
+            <section id="container-info">
+                <!-- sessão de entrada -->
+                    <section>
+                        <label for="inasc">ano do Nascimento</label> <input type="number" name="nasc" id="inasc" placeholder="xxxx" requeired min="1900">
+                    </section>
+                    <!-- sessão de entrada -->
+                    <section>
+                        <label for="">Sexo: </label>
+
+                        <input type="radio" name="sexo" id="imas"> <label for="imas">masculino</label>
+                        <input type="radio" name="sexo" id="ife"> <label for="ife">feminino</label>
+                    
+                    </section>
+                    <!-- sessão de entrada -->
+                    <section>
+                        <button id="btn-iden">Identificar</button>
+                    </section>
+                    <!-- sessão de saida -->
+                    <section id="container-image">
+                        <p id="text-info-idade"></p>
+                        <div id="imagem-pessoa">
+                            
+                        </div>
+                    </section>
+            </section>
+        </main>
+
+        <!-- Javascripts -->
+        <script src="scripts/main.js"></script>
+
+    </body>
+</html>
