@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>exercicps</title>
+</head>
+<body>
+    <header>
+        <h1>Vamos contar!</h1>
+    </header>
+    <!--  conteúdo principal -->
+    <main>
+        
+        <!--  sessão de entrada -->
+        <section id="entrada">
+            
+            <section>
+                <label for="inicio-num">Inicio</label> <input type="number" name="inicio-num" id="inicio-num">
+            </section>
+            <section>
+                <label for="fim-num">fim </label> <input type="number" name="fim-num" id="fim-num">
+            </section>
+            <section>
+                <label for="passos">passos </label> <input type="number" name="passos" id="passos" min="1">
+            </section>
+            <section>
+                <button id="btn" onclick="contar()">contar!</button>
+            </section>
+        </section>
+
+        <!-- sessão de saida -->
+        <section id="res">
+            <p>aguardando valaores para começar a contagem!</p>
+        </section>  
+
+        
+    </main>
+    <!-- rodapé -->
+     <footer>
+        <p> &copy; IanK3lwin</p>
+     </footer>
+    <!-- JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

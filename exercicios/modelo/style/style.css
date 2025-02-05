@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/* rezetando as estilizações */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    
+}
+
+/* htnl  */
+
+html {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* body */
+
+body {
+    /* size */
+    height: 100%;
+
+    /* flex */
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    
+    /* bg */
+    background-color: rgb(236, 184, 184);
+}
+
+
+main
+{
+    /*sixze*/
+    height: 500px;
+    width: 600px;
+    margin: 10px;
+    /* bg */
+    background-color: rgb(81, 81, 163);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.411);
+
+    
+    /* flex */
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+}
+
+#entrada {
+    
+}
