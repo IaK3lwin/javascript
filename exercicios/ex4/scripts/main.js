@@ -20,7 +20,7 @@ function contar()
     let validation = validation_date(inicio, passo, fim)
 
     //inicia a coantagem com 1
-    res.innerHTML = `   &#X1F3C1;  ${inicio} &#x1F449; `
+    //res.innerHTML = `   &#X1F3C1;  ${inicio} &#x1F449; `
 
     if (validation) {
         //percorre toda a distancia entre o inicio e o fim
