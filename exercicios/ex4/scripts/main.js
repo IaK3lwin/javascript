@@ -1,53 +1,82 @@
 
-//DOM
-
-let init = false
-let btn_check = 0
-
 function contar()
 {
-    
-    alert(btn_check)
-    let inicio = document.getElementById('inicio-num')
-    let fim = document.getElementById('fim-num')
-    let passos = document.getElementById('passos')
+    //variavbeos
+    //vaor do inicio
+    let inicio = Number.parseInt(document.getElementById('inicio-num').value)
+    //valor de onde até a contagem termina
+    let fim = Number.parseInt(document.getElementById('fim-num').value)
+    //quantos passos de contagem
+    let passo =Number.parseInt(document.getElementById('passos').value) 
+
+    //ara de entrada
     let res = document.getElementById('res')
-    let button = document.querySelector('button#btn')
 
-    if (init == false)
-    {
-        res.innerHTML = "&#x1F3C1; "
-        init = true
-        alert("inicou")
-        btn_check++
-        alert(btn_check)
-    }
+    //armazena a contagem
+    let cont = inicio
+    //caso a contagem começe com 0
 
-    let contando
-    //console.log(inicio.value, fim.value)
-    if (passos.value == 1)
-    {
-        contando = Number.parseInt(inicio.value - 1)
-    }
-    else
-    {
-        contando = Number.parseInt(inicio.value)
-    }
-    console.log('contando....')
-    for (let start = inicio.value; start <= fim.value; start++)
-    {
-        if (btn_check == 1)
+    //validação dos dados
+    let validation = validation_date(inicio, passo, fim)
+
+    //inicia a coantagem com 1
+    res.innerHTML = `   &#X1F3C1;  ${inicio} &#x1F449; `
+
+    if (validation) {
+        //percorre toda a distancia entre o inicio e o fim
+        for (let start = inicio; start <= fim - 1; start++)
         {
-            res.innerHTML = "&#x1F3C1; "
+            //cointando de acordo com os passos
+            cont += passo
+            //mostra os passos 
+            res.innerHTML += (`${cont} &#x1F449;`)
         }
-        
-        contando += Number.parseInt(passos.value)
-        console.log(`contando: ${contando}`)
-        //console.log(start)
-        res.innerHTML += ` &#x1F449; ${contando} `
-           
+        //quando acabara contagem 
+        res.innerHTML += "&#x1F6A9; FIM"
+    } else {
+        res.innerHTMl = "<h1>Digite as informações corretamentes para que a contagem dê certo!</h1>"
+        window.alert('[ERROR] : verifique os dados e tente novamente')
     }
-    res.innerHTML += '&#x1F6A9; FIM!'
 
+    
 }
 
+
+
+function validation_date(inicio, passos, fim)
+{
+    if (passos < 0 || passos == 0)
+    {
+        return false
+    }
+    else if (fim < inicio || inicio == fim) 
+    {
+        return false
+    }
+    return true
+}
+/*
+////////////// ALGORITMO BASE /////////////////////
+
+//variavbeos
+let inicio = 1
+let fim = 10
+let passo = 1
+let cont = 1
+//inicia a coantagem com 1
+console.log(` 🏁 ${inicio} -> `)
+//percorre toda a distancia entre o inicio e o fim
+for (let start = inicio; start <= fim - 1; start++)
+{
+    //cointando de acordo com os passos
+    cont += passo
+    //mostra os passos 
+    console.log(`${cont} ->`)
+}
+//quando acabara contagem 
+console.log(` 🚩 Fim   `)
+
+
+
+
+*/
