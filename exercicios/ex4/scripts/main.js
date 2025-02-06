@@ -24,12 +24,11 @@ function contar()
 
     if (validation) {
         //percorre toda a distancia entre o inicio e o fim
-        for (let start = inicio; start <= fim - 1; start++)
+        for (let start = inicio; start <= fim - 1; start += passo)
         {
             //cointando de acordo com os passos
-            cont += passo
             //mostra os passos 
-            res.innerHTML += (`${cont} &#x1F449;`)
+            res.innerHTML += (`${start} &#x1F449;`)
         }
         //quando acabara contagem 
         res.innerHTML += "&#x1F6A9; FIM"
